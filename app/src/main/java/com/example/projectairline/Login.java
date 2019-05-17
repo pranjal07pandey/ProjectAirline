@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
         getSupportActionBar().hide();
 
         viewuserId = findViewById(R.id.userName);
@@ -126,7 +127,8 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(Login.this, "Error or Not Internet connection" + t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Error or Not Internet connection"+t, Toast.LENGTH_LONG).show();
+
 
             }
         });
