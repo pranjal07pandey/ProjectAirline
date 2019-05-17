@@ -1,5 +1,6 @@
 package com.example.projectairline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,12 +18,16 @@ public class AllSchedule extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_allschedule:
+
 
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_mynotifications:
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_myhistory:
+                    return true;
+                case R.id.navigation_myschedules:
+
                     return true;
             }
             return false;
