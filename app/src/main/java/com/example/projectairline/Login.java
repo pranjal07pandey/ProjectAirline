@@ -3,6 +3,7 @@ package com.example.projectairline;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.projectairline.Datamodel.User;
 import com.example.projectairline.Utilities.RetrofitClient;
+import com.example.projectairline.Utilities.SharedPreferencemanager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -99,45 +101,54 @@ public class Login extends AppCompatActivity {
 
                 if (loginresponse.getError()){
 
-                    viewuserId.setError("Username or password incorrect");
-                    viewPassword.setError("Username or password incorrect");
                     Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
 
                     return;
 
 
                 }
+
+                else if(loginresponse != null || loginresponse.getError()==false){
+
+                    SharedPreferencemanager.getmInstance(Login.this).saveUser(loginresponse);
+
+                    Toast.makeText(Login.this, loginresponse.getId()+loginresponse.getRole(), Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                    startActivity(intent);
+                }
+
+
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(Login.this, "Error or Not Internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Error or Not Internet connection" + t, Toast.LENGTH_SHORT).show();
 
             }
         });
 
 
 
-
-
-
     }
 
 
-//    @Override
-//    protected void onStart(){
+    @Override
+    protected void onStart(){
+
+        super.onStart();
+
+        if (SharedPreferencemanager.getmInstance(this).isLoggedIn()) {
 //
-//        super.onStart();
+            Intent intent = new Intent(Login.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
 //
-////        if (SharedPreferenceManager.getmInstance(this).isLoggedIn()) {
-////
-//            Intent intent = new Intent(Login.this, MainActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            startActivity(intent);
-////
-////        }
-//
-//
-//    }
+        }
+
+
+    }
 
 }
