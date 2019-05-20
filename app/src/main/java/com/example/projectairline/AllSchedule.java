@@ -15,7 +15,11 @@ import android.widget.Toast;
 
 public class AllSchedule extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
-    Fragment fragment;
+    Myschedule myschedulefragment;
+    MyHistoryFragment myHistoryFragment;
+    Mynotificationfragment mynotificationfragment;
+    FragmentManager fragmentManager;
+    AllScheduleFrag allScheduleFrag;
     View v;
 
     private TextView mTextMessage;
@@ -28,15 +32,26 @@ public class AllSchedule extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_allschedule:
-               getSupportFragmentManager().beginTransaction().replace(R.id.fragmentplace,new AllScheduleFrag());
-
+                    allScheduleFrag = new AllScheduleFrag();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.fragmentplace,allScheduleFrag).commit();
                     return true;
                 case R.id.navigation_mynotifications:
+                    mynotificationfragment = new Mynotificationfragment();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.fragmentplace,mynotificationfragment).commit();
                     return true;
                 case R.id.navigation_myhistory:
+                    myHistoryFragment = new MyHistoryFragment();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.fragmentplace,myHistoryFragment).commit();
                     return true;
                 case R.id.navigation_myschedules:
-                    Changefragment(v);
+                    myschedulefragment = new Myschedule();
+                   fragmentManager = getSupportFragmentManager();
+                   fragmentManager.beginTransaction().replace(R.id.fragmentplace,myschedulefragment).commit();
+
+
 
                     return true;
             }
@@ -61,36 +76,9 @@ public class AllSchedule extends AppCompatActivity {
 
     }
 
-    public void Changefragment(View view){
-
-
-        if (view == findViewById(R.id.navigation_allschedule)){
-            fragment = new AllScheduleFrag();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentplace,fragment);
-            fragmentTransaction.commit();
-
-
-        }
-
-        if (view == findViewById(R.id.navigation_myschedules)){
-            Toast.makeText(AllSchedule.this, "My", Toast.LENGTH_SHORT).show();
-
-
-            fragment = new Myschedule();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-
-            fragmentTransaction.replace(R.id.fragmentplace,fragment);
-            fragmentTransaction.commit();
-
-
-
-        }
 
 
 
     }
 
-}
+
