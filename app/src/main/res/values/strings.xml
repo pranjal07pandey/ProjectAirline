@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ProjectAirline</string>
+    <string name="action_settings">Logout</string>
+
     <string name="title_activity_all_schedule">AllSchedule</string>
     <string name="title_all">All Schedules</string>
     <string name="title_home">All Schedules</string>
