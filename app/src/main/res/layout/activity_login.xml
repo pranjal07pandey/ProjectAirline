@@ -125,7 +125,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="20dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/buttonsignup"
+                android:background="@color/bluelight"
                 android:text="Login"
                 android:textSize="25dp"
                 android:textAllCaps="false"
