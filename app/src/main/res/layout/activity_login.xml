@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login"
-    android:background="@drawable/background"
+    android:background="#1e5ac9"
     >
 
 
@@ -61,9 +61,12 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:hint="Enter Phone Number"
+                android:textColorHint="#f4f5f7"
+
                 android:textSize="20sp"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#f4f5f7"/>
 
 
         </LinearLayout>
@@ -88,8 +91,11 @@
                 android:drawablePadding="5dp"
                 android:textSize="20sp"
                 android:hint="Enter Your password"
+                android:textColorHint="#f4f5f7"
                 android:inputType="textPassword"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#f4f5f7"
+                />
 
         </LinearLayout>
 
@@ -132,12 +138,11 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-
                 android:textSize="20dp"
                 android:text="Register Here"
                 android:textStyle="italic"
                 android:textAllCaps="false"
-                android:textColor="@color/background" />
+                android:textColor="#f4f5f7"/>
 
         </LinearLayout>
 
