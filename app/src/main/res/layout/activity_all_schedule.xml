@@ -13,8 +13,6 @@
         android:layout_height="match_parent"
         android:id="@+id/fragmentplace"
         android:layout_above="@+id/navigation"
-
-
         />
 
 
