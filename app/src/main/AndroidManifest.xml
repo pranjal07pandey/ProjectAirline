@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".AllSchedule"
             android:label="@string/title_activity_all_schedule">
@@ -29,6 +29,10 @@
 
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".SchedulePopup"
+            android:theme="@style/AppTheme.CustomTheme1"
+            />
+
     </application>
 
 </manifest>

@@ -9,9 +9,8 @@ public class ScheduleCrewFrag  {
     private String etd;
     private String flightno;
     private String remarks;
-
-    String[] captaincrew = new String[0];
-    String[] cabincrew = new String[0];
+    private String[] captaincrew;
+    private String[] cabincrew;
 
 
     public ScheduleCrewFrag(int id, String date, String route, String eta, String etd, String flightno, String remarks, String[] captaincrew, String[] cabincrew) {

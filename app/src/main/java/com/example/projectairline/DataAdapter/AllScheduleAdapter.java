@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.projectairline.AllSchedule;
 import com.example.projectairline.Datamodel.ScheduleCrewFrag;
 import com.example.projectairline.R;
+import com.example.projectairline.SchedulePopup;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class AllScheduleAdapter extends RecyclerView.Adapter<AllScheduleAdapter.
 
     private List<ScheduleCrewFrag> crewFragList;
     private Context mcontext;
+    String id, eta, etd, remarks, captainCrew, cabinCrew;
 
     public AllScheduleAdapter(List<ScheduleCrewFrag> crewFragList, Context mcontext){
         this.crewFragList = crewFragList;
@@ -40,11 +42,32 @@ public class AllScheduleAdapter extends RecyclerView.Adapter<AllScheduleAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Myviewholder myviewholder, int i) {
+    public void onBindViewHolder(@NonNull final Myviewholder myviewholder, final int i) {
 
         myviewholder.route.setText(crewFragList.get(i).getRoute());
         myviewholder.date.setText(crewFragList.get(i).getDate());
         myviewholder.flightNo.setText(crewFragList.get(i).getFlightno());
+
+
+
+
+        myviewholder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext, SchedulePopup.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("id",crewFragList.get(myviewholder.getAdapterPosition()).getId());
+                intent.putExtra("eta",crewFragList.get(myviewholder.getAdapterPosition()).getEta());
+                intent.putExtra("etd",crewFragList.get(myviewholder.getAdapterPosition()).getEtd());
+                intent.putExtra("remarks",crewFragList.get(myviewholder.getAdapterPosition()).getRemarks());
+                intent.putExtra("fn",crewFragList.get(myviewholder.getAdapterPosition()).getFlightno());
+                intent.putExtra("cabincrew",crewFragList.get(myviewholder.getAdapterPosition()).getCabincrew());
+
+
+                mcontext.startActivity(intent);
+            }
+        });
+
 
     }
 

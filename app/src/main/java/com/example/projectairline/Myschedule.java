@@ -77,8 +77,6 @@ AllScheduleAdapter allScheduleAdapterAdapter;
         });
 
 
-
-
         return v;
     }
 
