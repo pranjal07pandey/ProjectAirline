@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.projectairline.DataAdapter.AllScheduleAdapter;
 import com.example.projectairline.Datamodel.ScheduleCrewFrag;
 import com.example.projectairline.Utilities.RetrofitClient;
+import com.example.projectairline.Utilities.SharedPreferencemanager;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ import retrofit2.Response;
 public class Myschedule extends Fragment {
 
     RecyclerView recyclerViewmyschedule;
+    int id;
 List<ScheduleCrewFrag> scheduleCrewFragList;
 AllScheduleAdapter allScheduleAdapterAdapter;
 
@@ -35,12 +37,14 @@ AllScheduleAdapter allScheduleAdapterAdapter;
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_myschedule, container, false);
 
+        id = SharedPreferencemanager.getmInstance(getContext()).getUser().getId();
+
 
 
         recyclerViewmyschedule = v.findViewById(R.id.recycyleviewschedulemy);
         //call code
 
-        Call<List<ScheduleCrewFrag>> call = RetrofitClient.getmInstance().getApi().getScheduleCrew();
+        Call<List<ScheduleCrewFrag>> call = RetrofitClient.getmInstance().getApi().getScheduleCrew(id);
         call.enqueue(new Callback<List<ScheduleCrewFrag>>() {
             @Override
             public void onResponse(Call<List<ScheduleCrewFrag>> call, Response<List<ScheduleCrewFrag>> response) {
@@ -58,6 +62,7 @@ AllScheduleAdapter allScheduleAdapterAdapter;
                 else
                 {
                     Toast.makeText(getContext(), "No Data To Display", Toast.LENGTH_SHORT).show();
+
                 }
 
 

@@ -10,13 +10,14 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface API {
 
 
 
     @GET("getScheduleCrew.php/")
-    Call<List<ScheduleCrewFrag>> getScheduleCrew();
+    Call<List<ScheduleCrewFrag>> getScheduleCrew(@Query("id") int id);
 
 
     @FormUrlEncoded
