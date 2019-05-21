@@ -8,7 +8,7 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        android:icon="@drawable/signup_confirmpassword"
+        android:icon="@drawable/ic_launcher_exit"
         app:showAsAction="always" />
 
 

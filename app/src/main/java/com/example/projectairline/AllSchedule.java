@@ -1,6 +1,7 @@
 package com.example.projectairline;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,10 +9,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.projectairline.Utilities.SharedPreferencemanager;
 
 public class AllSchedule extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
@@ -76,9 +80,28 @@ public class AllSchedule extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main,menu);
+        MenuItem menuItem =menu.findItem(R.id.action_settings);
 
 
-
+        return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings){
+            SharedPreferencemanager.getmInstance(this).clear();
+            Intent t= new Intent(AllSchedule.this,Login.class);
+            Toast.makeText(AllSchedule.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+            startActivity(t);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
 
 
