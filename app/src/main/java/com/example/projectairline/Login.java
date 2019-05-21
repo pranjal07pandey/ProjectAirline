@@ -113,12 +113,10 @@ public class Login extends AppCompatActivity {
                 else if(loginresponse != null || loginresponse.getError()==false){
 
                     SharedPreferencemanager.getmInstance(Login.this).saveUser(loginresponse);
-
-                    Toast.makeText(Login.this, loginresponse.getId()+loginresponse.getRole(), Toast.LENGTH_SHORT).show();
-
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
 
