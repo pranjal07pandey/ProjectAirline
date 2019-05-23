@@ -31,7 +31,7 @@ public class MyscheduleFragment extends Fragment {
     RecyclerView recyclerViewmyschedule;
     int id;
 List<Schedulemodel> schedulemodelList;
-ProgressBar progressBar;
+ProgressBar progressBarmy;
 Scheduleadpterfirst scheduleadpterfirst;
 
     @Override
@@ -43,8 +43,8 @@ Scheduleadpterfirst scheduleadpterfirst;
         id = SharedPreferencemanager.getmInstance(getContext()).getUser().getId();
 
 
-        progressBar = new ProgressBar(getContext());
-        progressBar.setVisibility(View.VISIBLE);
+        progressBarmy = new ProgressBar(getContext());
+        progressBarmy.setVisibility(View.VISIBLE);
 
         recyclerViewmyschedule = v.findViewById(R.id.recycyleviewschedulemy);
         //call code
@@ -53,7 +53,9 @@ Scheduleadpterfirst scheduleadpterfirst;
         call.enqueue(new Callback<List<Schedulemodel>>() {
             @Override
             public void onResponse(Call<List<Schedulemodel>> call, Response<List<Schedulemodel>> response) {
-                progressBar.setVisibility(View.GONE);
+                progressBarmy.setVisibility(View.GONE);
+
+
                 schedulemodelList = response.body();
 
                 if (response.body()!=null){
@@ -68,7 +70,7 @@ Scheduleadpterfirst scheduleadpterfirst;
 
                 else
                 {
-                    progressBar.setVisibility(View.GONE);
+                    progressBarmy.setVisibility(View.GONE);
 
                     Toast.makeText(getContext(), "No Data To Display", Toast.LENGTH_SHORT).show();
 
@@ -80,7 +82,7 @@ Scheduleadpterfirst scheduleadpterfirst;
             @Override
             public void onFailure(Call<List<Schedulemodel>> call, Throwable t) {
 
-                progressBar.setVisibility(View.GONE);
+                progressBarmy.setVisibility(View.GONE);
 
                 Toast.makeText(getContext(), "Error in connection", Toast.LENGTH_SHORT).show();
 

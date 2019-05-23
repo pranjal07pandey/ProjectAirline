@@ -55,9 +55,6 @@ FragmentManager fragmentManager;
       date = schedulemodels.get(i).getDate();
 
 
-
-
-
            MyscheduleFragSecond myFragment = new MyscheduleFragSecond();
 
               Bundle bundle=new Bundle();

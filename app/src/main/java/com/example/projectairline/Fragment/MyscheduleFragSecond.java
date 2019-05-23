@@ -30,6 +30,7 @@ import retrofit2.Response;
 public class MyscheduleFragSecond extends Fragment {
     RecyclerView recyclerViewmyschedule;
     ProgressBar progressBar;
+    int id;
     String date;
     List<Schedulemodel> schedulemodelList;
    ScheduleAdapterSecond scheduleAdapterSecond;
@@ -48,6 +49,9 @@ public class MyscheduleFragSecond extends Fragment {
         View v = inflater.inflate(R.layout.fragment_myschedule_frag_second, container, false);
 
 
+        id = SharedPreferencemanager.getmInstance(getContext()).getUser().getId();
+
+
         progressBar = new ProgressBar(getContext());
         progressBar.setVisibility(View.VISIBLE);
 
@@ -56,7 +60,7 @@ public class MyscheduleFragSecond extends Fragment {
         recyclerViewmyschedule = v.findViewById(R.id.recycyleviewschedulemysecond);
         //call code
 
-        Call<List<Schedulemodel>> call = RetrofitClient.getmInstance().getApi().getMyschedulesecond(date);
+        Call<List<Schedulemodel>> call = RetrofitClient.getmInstance().getApi().getMyschedulesecond(date,id);
         call.enqueue(new Callback<List<Schedulemodel>>() {
             @Override
             public void onResponse(Call<List<Schedulemodel>> call, Response<List<Schedulemodel>> response) {

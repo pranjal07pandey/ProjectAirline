@@ -19,7 +19,7 @@ public class AllScheduleFrag extends Fragment {
         // Inflate the layout for this fragment
        View v = inflater.inflate(R.layout.fragment_all_schedule, container, false);
 
-
+// cpde
 
 
 
