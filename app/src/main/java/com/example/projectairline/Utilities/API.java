@@ -22,6 +22,13 @@ public interface API {
     @GET("getScheduleDateWise.php/")
     Call<List<Schedulemodel>> getMyschedulesecond(@Query("date") String date, @Query("id")int id);
 
+    @GET("getAllSchedule.php/")
+    Call<List<Schedulemodel>> getAllScheduleFirst(@Query("id") int id);
+
+    @GET("getScheduleDetail.php/")
+    Call<List<Schedulemodel>> getAllScheduleSecond(@Query("date") String date, @Query("id") int id);
+
+
 
     @FormUrlEncoded
     @POST("login.php/")
