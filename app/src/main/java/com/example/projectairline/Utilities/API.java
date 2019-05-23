@@ -1,6 +1,6 @@
 package com.example.projectairline.Utilities;
 
-import com.example.projectairline.Datamodel.ScheduleCrewFrag;
+import com.example.projectairline.Datamodel.Schedulemodel;
 import com.example.projectairline.Datamodel.User;
 
 import java.util.List;
@@ -16,8 +16,11 @@ public interface API {
 
 
 
-    @GET("getScheduleCrew.php/")
-    Call<List<ScheduleCrewFrag>> getScheduleCrew(@Query("id") int id);
+    @GET("getDateCrew.php/")
+    Call<List<Schedulemodel>> getMyschedulefirst(@Query("id") int id);
+
+    @GET("getScheduleDateWise.php/")
+    Call<List<Schedulemodel>> getMyschedulesecond(@Query("date") String date);
 
 
     @FormUrlEncoded

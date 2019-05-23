@@ -3,26 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.MyscheduleFragment"
-    android:background="@drawable/background">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".Fragment.MyscheduleFragSecond">
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/progressbarschedulefrag"/>
+        android:id="@+id/progressbarschedulefragsecond"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycyleviewschedulemy">
+        android:id="@+id/recycyleviewschedulemysecond"
+        android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
-
-
 
 
 

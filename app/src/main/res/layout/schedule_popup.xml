@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -9,46 +11,152 @@
     android:layout_gravity="center">
 
 
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/relativeflight"
+        android:layout_marginLeft="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+
+        <TextView
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:id="@+id/textflight"
+            android:text="Flight :"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/Titlehome"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+
+            />
+        <TextView
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/flightv"
+            android:layout_toRightOf="@+id/textflight"
+
+
+            android:textColor="@color/Titlehome"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:text="1001"
+
+
+            />
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/linear1"
-        android:layout_marginLeft="20dp"
-
-
-
-        >
+        android:id="@+id/linearroute"
+        android:layout_marginLeft="20dp">
 
         <TextView
+
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="@color/Titlehome"
             android:textSize="20sp"
+            android:layout_weight="1"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:text="id : "
+            android:text="Route : "
+
 
             />
 
         <TextView
-            android:id="@+id/flightId"
+            android:id="@+id/route"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
+            android:layout_weight="1"
             android:layout_marginTop="15dp"
-            android:text="1"
+            android:text="Ktm-Bkt"
+            android:textAllCaps="true"
             android:textAlignment="center"
-            android:maxLength="10"
+            android:maxLength="20"
             android:ellipsize="marquee"
             android:textColor="@color/Titlehome"
             android:textSize="20sp"
+
             />
 
+
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearfligh"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:text="Date: "
+
+
+            />
+
+        <TextView
+            android:id="@+id/datetv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:text="Ktm-Bkt"
+            android:textAlignment="center"
+            android:maxLength="20"
+            android:ellipsize="marquee"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+
+            />
+
+
+    </LinearLayout>
+
+
 
 
     <LinearLayout
@@ -56,6 +164,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linear2"
+        android:weightSum="4"
         android:layout_marginLeft="20dp">
 
         <TextView
@@ -66,6 +175,7 @@
             android:textColor="@color/Titlehome"
             android:textSize="20sp"
             android:textAllCaps="true"
+            android:layout_weight="1"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
             android:text="eta : "
@@ -78,10 +188,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+
             android:layout_marginTop="15dp"
             android:text="2019-1-2"
             android:textAlignment="center"
             android:maxLength="20"
+            android:ellipsize="marquee"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/Titlehome"
+            android:layout_weight="1"
+android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+
+            android:layout_marginTop="15dp"
+
+            android:text="etd : "
+
+            />
+
+        <TextView
+            android:id="@+id/flightEtd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+
+            android:text="2019-1-2"
+            android:textAlignment="center"
+            android:maxLength="10"
             android:ellipsize="marquee"
             android:textColor="@color/Titlehome"
             android:textSize="20sp"
@@ -99,77 +245,12 @@
         android:id="@+id/linear3"
         android:layout_marginLeft="20dp">
 
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/Titlehome"
-            android:textSize="20sp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-
-            android:layout_marginTop="15dp"
-
-            android:text="etd : "
-
-            />
-
-        <TextView
-            android:id="@+id/flightEtd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="15dp"
-            android:text="2019-1-2"
-            android:textAlignment="center"
-            android:maxLength="10"
-            android:ellipsize="marquee"
-            android:textColor="@color/Titlehome"
-            android:textSize="20sp"
-
-            />
 
     </LinearLayout>
 
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/linear5"
-        android:layout_marginLeft="20dp">
 
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/Titlehome"
-            android:textSize="20sp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-            android:text="remarks : "
-
-            />
-
-        <TextView
-            android:id="@+id/captainCrew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="15dp"
-            android:text="ola"
-            android:textAlignment="center"
-            android:maxLength="10"
-            android:ellipsize="marquee"
-            android:textColor="@color/Titlehome"
-            android:textSize="20sp"
-            />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -188,19 +269,55 @@
             android:textAllCaps="true"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:text="captain crew : "
+            android:text="Pilot : "
 
             />
 
         <TextView
-            android:id="@+id/cabinCrew"
+            android:id="@+id/flightcaptaincrew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="15dp"
-            android:text="ola"
             android:textAlignment="center"
-            android:maxLength="10"
+            android:maxLength="20"
+            android:text="Samriddha Adhikari"
+            android:ellipsize="marquee"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear7"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:text="Co-Pilot : "
+
+            />
+
+        <TextView
+            android:id="@+id/flightcocaptaincrew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:text="Ram"
+            android:textAlignment="center"
             android:ellipsize="marquee"
             android:textColor="@color/Titlehome"
             android:textSize="20sp"
@@ -230,14 +347,51 @@
             />
 
         <TextView
+            android:id="@+id/flightcabincrew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:ellipsize="marquee"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:id="@+id/linearremarks"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:text="remarks : "
+
+            />
+
+        <TextView
             android:id="@+id/flightRemarks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="15dp"
+
             android:text="ola"
             android:textAlignment="center"
-            android:maxLength="10"
+            android:maxLength="20"
             android:ellipsize="marquee"
             android:textColor="@color/Titlehome"
             android:textSize="20sp"
@@ -249,7 +403,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         >
 
         <Button

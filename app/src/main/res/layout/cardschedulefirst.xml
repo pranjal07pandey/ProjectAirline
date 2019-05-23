@@ -1,0 +1,57 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardviewmyschedulefirst"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="5dp"
+    android:contextClickable="false"
+    cardview:cardBackgroundColor="@color/Titlehome"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    cardview:cardCornerRadius="4dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="7dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearlatou"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Flight Date :"
+                android:textAllCaps="true"
+                android:ellipsize="marquee"
+                android:textAlignment="center"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/background"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/flightdatefirst"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="12-07-2019"
+                android:ellipsize="marquee"
+                android:textColor="@color/background"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

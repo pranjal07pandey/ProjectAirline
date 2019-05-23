@@ -1,5 +1,6 @@
 package com.example.projectairline.DataAdapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,21 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.projectairline.AllSchedule;
-import com.example.projectairline.Datamodel.ScheduleCrewFrag;
+import com.example.projectairline.Datamodel.Schedulemodel;
 import com.example.projectairline.R;
 import com.example.projectairline.SchedulePopup;
 
 import java.util.List;
 
-public class AllScheduleAdapter extends RecyclerView.Adapter<AllScheduleAdapter.Myviewholder> {
+public class ScheduleAdapterSecond extends RecyclerView.Adapter<ScheduleAdapterSecond.Myviewholder> {
 
+    Dialog mydialog;
+    private List<Schedulemodel> crewFragList;
+    String cabincrew[];
 
-    private List<ScheduleCrewFrag> crewFragList;
     private Context mcontext;
-    String id, eta, etd, remarks, captainCrew, cabinCrew;
 
-    public AllScheduleAdapter(List<ScheduleCrewFrag> crewFragList, Context mcontext){
+    public ScheduleAdapterSecond(List<Schedulemodel> crewFragList, Context mcontext){
         this.crewFragList = crewFragList;
         this.mcontext = mcontext;
     }
@@ -32,11 +33,19 @@ public class AllScheduleAdapter extends RecyclerView.Adapter<AllScheduleAdapter.
 
     @NonNull
     @Override
-    public AllScheduleAdapter.Myviewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ScheduleAdapterSecond.Myviewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         View v;
         LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
         v = layoutInflater.inflate(R.layout.cardallschedule, viewGroup, false);
+
+        mydialog = new Dialog(mcontext);
+        mydialog.setContentView(R.layout.schedule_popup);
+
+
+
+
+
         return new Myviewholder(v);
 
     }
@@ -50,17 +59,19 @@ public class AllScheduleAdapter extends RecyclerView.Adapter<AllScheduleAdapter.
 
 
 
-
         myviewholder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mcontext, SchedulePopup.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("id",crewFragList.get(myviewholder.getAdapterPosition()).getId());
+                intent.putExtra("date",crewFragList.get(myviewholder.getAdapterPosition()).getDate());
+                intent.putExtra("route",crewFragList.get(myviewholder.getAdapterPosition()).getRoute());
+                intent.putExtra("flightno",crewFragList.get(myviewholder.getAdapterPosition()).getFlightno());
                 intent.putExtra("eta",crewFragList.get(myviewholder.getAdapterPosition()).getEta());
                 intent.putExtra("etd",crewFragList.get(myviewholder.getAdapterPosition()).getEtd());
                 intent.putExtra("remarks",crewFragList.get(myviewholder.getAdapterPosition()).getRemarks());
-                intent.putExtra("fn",crewFragList.get(myviewholder.getAdapterPosition()).getFlightno());
+                intent.putExtra("pilot",crewFragList.get(myviewholder.getAdapterPosition()).getPilot());
+                intent.putExtra("copilot",crewFragList.get(myviewholder.getAdapterPosition()).getCopilot());
                 intent.putExtra("cabincrew",crewFragList.get(myviewholder.getAdapterPosition()).getCabincrew());
 
 

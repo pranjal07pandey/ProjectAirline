@@ -5,18 +5,25 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.projectairline.Datamodel.ScheduleCrewFrag;
+import com.example.projectairline.Datamodel.Schedulemodel;
 
 import java.util.List;
 
 public class SchedulePopup  extends Activity {
 
     Button buttonOK;
+    String[] cabincrewarray;
+    LinearLayout linearLayoutremarks;
+    String remarksval;
 
-    private List<ScheduleCrewFrag> scheduleCrewFrags;
-    TextView id, eta, etd, remarks, captaincrew, cabincrew;
+
+    private List<Schedulemodel> schedulemodels;
+
+    TextView id, eta, etd, remarks,copilot,pilot, cabincrew,flight,route,date;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,27 +38,56 @@ public class SchedulePopup  extends Activity {
             }
         });
 
+
+        linearLayoutremarks = findViewById(R.id.linearremarks);
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.55));
+        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.65));
 
-        id = findViewById(R.id.flightId);
+        flight = findViewById(R.id.flightv);
         eta = findViewById(R.id.flightEta);
         etd = findViewById(R.id.flightEtd);
+        route = findViewById(R.id.route);
+        date = findViewById(R.id.datetv);
         remarks = findViewById(R.id.flightRemarks);
-        captaincrew = findViewById(R.id.captainCrew);
-        cabincrew= findViewById(R.id.cabinCrew);
+        pilot = findViewById(R.id.flightcaptaincrew);
+        cabincrew= findViewById(R.id.flightcabincrew);
+        copilot = findViewById(R.id.flightcocaptaincrew);
 
-        id.setText(getIntent().getExtras().getString("id"));
         eta.setText(getIntent().getExtras().getString("eta"));
         etd.setText(getIntent().getExtras().getString("etd"));
-        remarks.setText(getIntent().getExtras().getString("remarks"));
-        captaincrew.setText(getIntent().getExtras().getString("captaincrew"));
-        cabincrew.setText(getIntent().getExtras().getString("fn"));
+       remarksval = getIntent().getExtras().getString("remarks");
+        if (remarksval.length()<=1){
+            linearLayoutremarks.setVisibility(View.GONE);
+        }
+
+        else {
+            linearLayoutremarks.setVisibility(View.VISIBLE);
+            remarks.setText(remarksval);
+        }
+        pilot.setText(getIntent().getExtras().getString("pilot"));
+        copilot.setText(getIntent().getExtras().getString("copilot"));
+
+        flight.setText(getIntent().getExtras().getString("flightno"));
+        route.setText(getIntent().getExtras().getString("route"));
+        date.setText(getIntent().getExtras().getString("date"));
+
+
+
+        cabincrewarray = getIntent().getStringArrayExtra("cabincrew");
+
+        int arraysize = cabincrewarray.length;
+
+        for (int i = 0;i< arraysize;i++){
+          cabincrew.append(cabincrewarray[i]);
+          cabincrew.append("\n");
+
+        }
 
 
 

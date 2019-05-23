@@ -1,9 +1,7 @@
-package com.example.projectairline;
+package com.example.projectairline.Main;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectairline.Datamodel.User;
+import com.example.projectairline.R;
 import com.example.projectairline.Utilities.RetrofitClient;
 import com.example.projectairline.Utilities.SharedPreferencemanager;
 
@@ -113,7 +112,7 @@ public class Login extends AppCompatActivity {
                 else if(loginresponse != null || loginresponse.getError()==false){
 
                     SharedPreferencemanager.getmInstance(Login.this).saveUser(loginresponse);
-                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    Intent intent = new Intent(Login.this, Dashboard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -145,7 +144,7 @@ public class Login extends AppCompatActivity {
 
         if (SharedPreferencemanager.getmInstance(this).isLoggedIn()) {
 //
-            Intent intent = new Intent(Login.this, MainActivity.class);
+            Intent intent = new Intent(Login.this, Dashboard.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
 //

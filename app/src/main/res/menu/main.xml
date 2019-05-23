@@ -10,7 +10,7 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        android:icon="@drawable/ic_launcher_exit"
+        android:icon="@drawable/ic_action_name"
         app:showAsAction="always" />
 
 
