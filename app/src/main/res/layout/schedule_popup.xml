@@ -206,7 +206,7 @@
             android:textAlignment="center"
             android:textColor="@color/Titlehome"
             android:layout_weight="1"
-android:layout_marginLeft="20dp"
+            android:layout_marginLeft="20dp"
             android:textSize="20sp"
             android:textAllCaps="true"
             android:textStyle="bold"
@@ -247,9 +247,6 @@ android:layout_marginLeft="20dp"
 
 
     </LinearLayout>
-
-
-
 
 
     <LinearLayout

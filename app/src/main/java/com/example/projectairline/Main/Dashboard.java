@@ -1,5 +1,6 @@
 package com.example.projectairline.Main;
 
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -16,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,11 @@ public class Dashboard extends AppCompatActivity {
     View v;
 
     private TextView mTextMessage;
+
+
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -87,6 +95,12 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_schedule);
+
+
+        mydialog = new Dialog(Dashboard.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
             mTextMessage = (TextView) findViewById(R.id.message);
             BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -151,11 +165,32 @@ public class Dashboard extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings){
-            SharedPreferencemanager.getmInstance(this).clear();
-            Intent t= new Intent(Dashboard.this,Login.class);
-            Toast.makeText(Dashboard.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
-            startActivity(t);
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+
+            mydialog.show();
+
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferencemanager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(Dashboard.this,Login.class);
+                    Toast.makeText(Dashboard.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
