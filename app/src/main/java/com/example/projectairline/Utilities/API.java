@@ -23,7 +23,7 @@ public interface API {
     Call<List<Schedulemodel>> getMyschedulesecond(@Query("date") String date, @Query("id")int id);
 
     @GET("getAllSchedule.php/")
-    Call<List<Schedulemodel>> getAllScheduleFirst(@Query("id") int id);
+    Call<List<Schedulemodel>> getAllScheduleFirst();
 
     @GET("getScheduleDetail.php/")
     Call<List<Schedulemodel>> getAllScheduleSecond(@Query("date") String date, @Query("id") int id);

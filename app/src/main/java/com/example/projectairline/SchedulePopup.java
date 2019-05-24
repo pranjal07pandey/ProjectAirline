@@ -47,7 +47,7 @@ public class SchedulePopup  extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.8));
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.65));
 
         flight = findViewById(R.id.flightv);
         eta = findViewById(R.id.flightEta);

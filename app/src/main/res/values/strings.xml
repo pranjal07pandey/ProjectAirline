@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">ProjectAirline</string>
+    <string name="app_name">Buddha Air Roaster</string>
     <string name="action_settings">Logout</string>
 
-    <string name="title_activity_all_schedule">Flight Roster</string>
+    <string name="title_activity_all_schedule">Flight Roaster</string>
     <string name="title_all">All Schedules</string>
     <string name="title_home">All Schedules</string>
     <string name="title_myschedule">My Schedules</string>

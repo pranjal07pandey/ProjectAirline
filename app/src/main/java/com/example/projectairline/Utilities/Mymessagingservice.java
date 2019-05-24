@@ -34,7 +34,7 @@ public class Mymessagingservice extends FirebaseMessagingService {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "AirlineNotification")
                 .setContentText(title)
                 .setContentTitle(message)
-                .setSmallIcon(R.drawable.background)
+                .setSmallIcon(R.drawable.appicon)
                 .setAutoCancel(true);
 
         builder.setContentIntent(notifyPendingIntent);

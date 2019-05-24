@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main.Login"
-    android:background="#1e5ac9"
+     android:background="@drawable/bgapp"
     >
 
 
@@ -22,7 +22,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="40dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/logo_buddha" />
+            android:src="@drawable/buddhair" />
 
 
 
@@ -61,12 +61,12 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:hint="Enter Phone Number"
-                android:textColorHint="#f4f5f7"
+                android:textColorHint="@color/background"
 
                 android:textSize="20sp"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
-                android:textColor="#f4f5f7"/>
+                android:textColor="@color/background"/>
 
 
         </LinearLayout>
@@ -91,10 +91,10 @@
                 android:drawablePadding="5dp"
                 android:textSize="20sp"
                 android:hint="Enter Your password"
-                android:textColorHint="#f4f5f7"
+                android:textColorHint="@color/background"
                 android:inputType="textPassword"
                 android:textAlignment="center"
-                android:textColor="#f4f5f7"
+                android:textColor="@color/background"
                 />
 
         </LinearLayout>
@@ -133,16 +133,7 @@
 
 
 
-            <TextView
-                android:id="@+id/textRegister"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:text="Register Here"
-                android:textStyle="italic"
-                android:textAllCaps="false"
-                android:textColor="#f4f5f7"/>
+
 
         </LinearLayout>
 

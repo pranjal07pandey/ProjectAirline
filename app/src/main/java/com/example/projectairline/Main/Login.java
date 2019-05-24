@@ -53,7 +53,6 @@ public class Login extends AppCompatActivity {
 
         viewuserId = findViewById(R.id.userName);
         viewPassword = findViewById(R.id.password);
-        register = findViewById(R.id.textRegister);
         button = findViewById(R.id.buttonLogin);
 
         firebaseinit();
@@ -68,15 +67,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent browserintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://logisparktech.com/lic/register"));
-                startActivity(browserintent);
-
-            }
-        });
 
 
     }
@@ -92,7 +82,7 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
 
-                            Toast.makeText(Login.this,"Failed"+task.getException(),Toast.LENGTH_LONG).show();
+//                            Toast.makeText(Login.this,"Failed"+task.getException(),Toast.LENGTH_LONG).show();
 
 
                             return;
@@ -103,7 +93,7 @@ public class Login extends AppCompatActivity {
 //                        // Get new Instance ID token
                             token = task.getResult().getToken();
 
-                            Toast.makeText(Login.this, "Success " + token, Toast.LENGTH_LONG).show();
+//                            Toast.makeText(Login.this, "Success " + token, Toast.LENGTH_LONG).show();
 
 
 //                        sendtokenagain(token2);
@@ -185,7 +175,6 @@ public class Login extends AppCompatActivity {
                     SharedPreferencemanager.getmInstance(Login.this).saveUser(loginresponse);
                     Intent intent = new Intent(Login.this, Dashboard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    Toast.makeText(Login.this, "Token"+token, Toast.LENGTH_SHORT).show();
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

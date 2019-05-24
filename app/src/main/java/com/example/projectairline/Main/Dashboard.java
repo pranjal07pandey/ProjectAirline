@@ -51,17 +51,23 @@ public class Dashboard extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_allschedule:
                     allScheduleFrag = new AllScheduleFrag();
+                    fragmentTransaction.addToBackStack(null);
+
                     fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.fragmentplace,allScheduleFrag).commit();
                     return true;
                 case R.id.navigation_mynotifications:
                     mynotificationfragment = new Mynotificationfragment();
                     fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction.addToBackStack(null);
+
                     fragmentManager.beginTransaction().replace(R.id.fragmentplace,mynotificationfragment).commit();
                     return true;
                 case R.id.navigation_myhistory:
                     myHistoryFragment = new MyHistoryFragment();
                     fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction.addToBackStack(null);
+
                     fragmentManager.beginTransaction().replace(R.id.fragmentplace,myHistoryFragment).commit();
                     return true;
                 case R.id.navigation_myschedules:
