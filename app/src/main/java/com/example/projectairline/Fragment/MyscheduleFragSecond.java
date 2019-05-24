@@ -52,7 +52,7 @@ public class MyscheduleFragSecond extends Fragment {
         id = SharedPreferencemanager.getmInstance(getContext()).getUser().getId();
 
 
-        progressBar = new ProgressBar(getContext());
+        progressBar = v.findViewById(R.id.progressbarschedulefragsecond);
         progressBar.setVisibility(View.VISIBLE);
 
 

@@ -1,9 +1,12 @@
 package com.example.projectairline.Main;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -17,6 +20,12 @@ import com.example.projectairline.Datamodel.User;
 import com.example.projectairline.R;
 import com.example.projectairline.Utilities.RetrofitClient;
 import com.example.projectairline.Utilities.SharedPreferencemanager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +38,7 @@ public class Login extends AppCompatActivity {
     ProgressDialog progressDialog;
     private TextView register;
     private Button button;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +56,13 @@ public class Login extends AppCompatActivity {
         register = findViewById(R.id.textRegister);
         button = findViewById(R.id.buttonLogin);
 
+        firebaseinit();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 userLogin();
-
 
 
             }
@@ -66,6 +77,64 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+
+    private String firebaseinit() {
+
+        FirebaseApp.initializeApp(Login.this);
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+
+                            Toast.makeText(Login.this,"Failed"+task.getException(),Toast.LENGTH_LONG).show();
+
+
+                            return;
+                        }
+
+                        else {
+
+//                        // Get new Instance ID token
+                            token = task.getResult().getToken();
+
+                            Toast.makeText(Login.this, "Success " + token, Toast.LENGTH_LONG).show();
+
+
+//                        sendtokenagain(token2);
+//
+//                        // Log and toast
+
+
+                        }
+
+                    }
+                });
+
+
+
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Sucessful";
+                        if (!task.isSuccessful()) {
+                            msg = "Not Sucessful";
+                        }
+
+//                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        return token;
+
 
 
     }
@@ -92,15 +161,17 @@ public class Login extends AppCompatActivity {
         }
 
 
-        Call<User> call = RetrofitClient.getmInstance().getApi().verifylogin(id, password);
+        Call<User> call = RetrofitClient.getmInstance().getApi().verifylogin(id, password,token);
 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
 
+
                 User loginresponse = response.body();
 
                 if (loginresponse.getError()){
+
 
                     Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
 
@@ -114,9 +185,11 @@ public class Login extends AppCompatActivity {
                     SharedPreferencemanager.getmInstance(Login.this).saveUser(loginresponse);
                     Intent intent = new Intent(Login.this, Dashboard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    Toast.makeText(Login.this, "Token"+token, Toast.LENGTH_SHORT).show();
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
+
                 }
 
 

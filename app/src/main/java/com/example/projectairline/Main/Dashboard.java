@@ -1,11 +1,16 @@
 package com.example.projectairline.Main;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +25,9 @@ import com.example.projectairline.Fragment.Mynotificationfragment;
 import com.example.projectairline.Fragment.MyscheduleFragment;
 import com.example.projectairline.R;
 import com.example.projectairline.Utilities.SharedPreferencemanager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Dashboard extends AppCompatActivity {
     int caseid;
@@ -28,6 +36,7 @@ public class Dashboard extends AppCompatActivity {
     MyHistoryFragment myHistoryFragment;
     Mynotificationfragment mynotificationfragment;
     FragmentManager fragmentManager;
+    private String token;
     AllScheduleFrag allScheduleFrag;
     View v;
 
@@ -73,15 +82,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_schedule);
 
-        caseid = getIntent().getIntExtra("ScheduleFirst",0);
-
-        if (caseid ==1) {
-
-            checkid(caseid);
-        }
-        else
-
-
             mTextMessage = (TextView) findViewById(R.id.message);
             BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
             navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -91,22 +91,32 @@ public class Dashboard extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+              NotificationChannel channel = new NotificationChannel("AirlineNotification","AirlineNotification",NotificationManager.IMPORTANCE_DEFAULT);
+              NotificationManager notificationManager  = getSystemService(NotificationManager.class);
+              notificationManager.createNotificationChannel(channel);
+
+          }
+
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Sucessful";
+                        if (!task.isSuccessful()) {
+                            msg = "Unsucessgul";
+                        }
+
+                        Toast.makeText(Dashboard.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
     }
 
-    private void checkid(int caseid) {
 
-
-
-            Toast.makeText(this, String.valueOf(caseid), Toast.LENGTH_SHORT).show();
-
-            myHistoryFragment = new MyHistoryFragment();
-            fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragmentplace,myHistoryFragment).commit();
-
-
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -143,6 +153,8 @@ public class Dashboard extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
 
 

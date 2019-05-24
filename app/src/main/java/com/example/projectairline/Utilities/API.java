@@ -27,7 +27,8 @@ public interface API {
     @POST("login.php/")
     Call<User> verifylogin(
             @Field("username") String username,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("key") String key
     );
 
 

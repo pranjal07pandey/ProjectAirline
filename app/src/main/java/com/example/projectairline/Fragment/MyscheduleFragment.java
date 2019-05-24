@@ -42,10 +42,8 @@ Scheduleadpterfirst scheduleadpterfirst;
 
         id = SharedPreferencemanager.getmInstance(getContext()).getUser().getId();
 
-
-        progressBarmy = new ProgressBar(getContext());
+        progressBarmy = v.findViewById(R.id.progressbarschedulefrag);
         progressBarmy.setVisibility(View.VISIBLE);
-
         recyclerViewmyschedule = v.findViewById(R.id.recycyleviewschedulemy);
         //call code
 
