@@ -157,20 +157,22 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
 
-
                 User loginresponse = response.body();
 
-                if (loginresponse.getError()){
+
+
+                if (loginresponse == null){
 
 
                     Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
+                    viewuserId.setText(null);
+                    viewPassword.setText(null);
 
-                    return;
 
 
                 }
 
-                else if(loginresponse != null || loginresponse.getError()==false){
+                else if(loginresponse != null){
 
                     SharedPreferencemanager.getmInstance(Login.this).saveUser(loginresponse);
                     Intent intent = new Intent(Login.this, Dashboard.class);
@@ -181,9 +183,6 @@ public class Login extends AppCompatActivity {
 
                 }
 
-
-
-
             }
 
             @Override
@@ -193,7 +192,6 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
 
 
     }
