@@ -160,12 +160,10 @@ public class Login extends AppCompatActivity {
 
                 User loginresponse = response.body();
 
-                if (loginresponse.getError()){
+                if (loginresponse.getError()==true){
 
 
                     Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
-
-                    return;
 
 
                 }
