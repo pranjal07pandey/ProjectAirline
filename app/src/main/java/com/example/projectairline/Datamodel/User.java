@@ -1,22 +1,24 @@
 package com.example.projectairline.Datamodel;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
     private int id;
     private String userid;
     private String password;
     private String role;
-    private boolean error;
+//    @SerializedName("error")
+//    private int error;
 
     private int verified;
 
 
-    public User(int id, String userid, String password, String role, boolean error, int verified) {
+    public User(int id, String userid, String password, String role, int verified) {
         this.id = id;
         this.userid = userid;
         this.password = password;
         this.role = role;
-        this.error = error;
         this.verified = verified;
     }
 
@@ -34,10 +36,6 @@ public class User {
 
     public String getRole() {
         return role;
-    }
-
-    public boolean getError() {
-        return error;
     }
 
     public int getVerified() {

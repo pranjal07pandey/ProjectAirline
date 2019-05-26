@@ -52,7 +52,6 @@ public class SharedPreferencemanager  {
                 sharedPreferences.getString("userid", null),
                 sharedPreferences.getString("password", null),
                 sharedPreferences.getString("role", null),
-                sharedPreferences.getBoolean("error", false),
                 sharedPreferences.getInt("verified", 1)
 
 
