@@ -4,17 +4,16 @@ import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,23 +22,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectairline.Fragment.AllScheduleFrag;
-import com.example.projectairline.Fragment.MyHistoryFragment;
-import com.example.projectairline.Fragment.Mynotificationfragment;
+import com.example.projectairline.Fragment.MyNotificationFragment;
+import com.example.projectairline.Fragment.ProfileFragment;
 import com.example.projectairline.Fragment.MyscheduleFragment;
 import com.example.projectairline.R;
+import com.example.projectairline.Upload;
 import com.example.projectairline.Utilities.SharedPreferencemanager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Dashboard extends AppCompatActivity {
     int caseid;
     FragmentTransaction fragmentTransaction;
     MyscheduleFragment myschedulefragment;
-    MyHistoryFragment myHistoryFragment;
-    Mynotificationfragment mynotificationfragment;
+    String pp;
+    MyNotificationFragment mynotificationfragment;
+    ProfileFragment myProfilefragment;
     FragmentManager fragmentManager;
-    private String token;
+    private String filename = "sdasfas";
     AllScheduleFrag allScheduleFrag;
     View v;
 
@@ -64,19 +70,18 @@ public class Dashboard extends AppCompatActivity {
                     fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.fragmentplace,allScheduleFrag).commit();
                     return true;
-                case R.id.navigation_mynotifications:
-                    mynotificationfragment = new Mynotificationfragment();
+                case R.id.navigation_myprofile:
+                    myProfilefragment = new ProfileFragment();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentManager.beginTransaction().replace(R.id.fragmentplace,myProfilefragment).commit();
+                    return true;
+                case R.id.navigation_mynotification:
+                    mynotificationfragment = new MyNotificationFragment();
                     fragmentManager = getSupportFragmentManager();
                     fragmentTransaction.addToBackStack(null);
 
                     fragmentManager.beginTransaction().replace(R.id.fragmentplace,mynotificationfragment).commit();
-                    return true;
-                case R.id.navigation_myhistory:
-                    myHistoryFragment = new MyHistoryFragment();
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentTransaction.addToBackStack(null);
-
-                    fragmentManager.beginTransaction().replace(R.id.fragmentplace,myHistoryFragment).commit();
                     return true;
                 case R.id.navigation_myschedules:
                     myschedulefragment = new MyscheduleFragment();
@@ -97,10 +102,10 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_all_schedule);
 
 
-        mydialog = new Dialog(Dashboard.this);
-        mydialog.setContentView(R.layout.logout_popup);
-        buttonYes= mydialog.findViewById(R.id.buttonYes);
-        buttonClose = mydialog.findViewById(R.id.buttonClose);
+            mydialog = new Dialog(Dashboard.this);
+            mydialog.setContentView(R.layout.logout_popup);
+            buttonYes = mydialog.findViewById(R.id.buttonYes);
+            buttonClose = mydialog.findViewById(R.id.buttonClose);
 
             mTextMessage = (TextView) findViewById(R.id.message);
             BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -111,26 +116,26 @@ public class Dashboard extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-              NotificationChannel channel = new NotificationChannel("AirlineNotification","AirlineNotification",NotificationManager.IMPORTANCE_DEFAULT);
-              NotificationManager notificationManager  = getSystemService(NotificationManager.class);
-              notificationManager.createNotificationChannel(channel);
+                NotificationChannel channel = new NotificationChannel("AirlineNotification", "AirlineNotification", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
 
-          }
+            }
 
-        FirebaseMessaging.getInstance().subscribeToTopic("general")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Sucessful";
-                        if (!task.isSuccessful()) {
-                            msg = "Unsucessgul";
+            FirebaseMessaging.getInstance().subscribeToTopic("general")
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            String msg = "Sucessful";
+                            if (!task.isSuccessful()) {
+                                msg = "Unsucessgul";
+                            }
+
+                            Toast.makeText(Dashboard.this, msg, Toast.LENGTH_SHORT).show();
                         }
-
-                        Toast.makeText(Dashboard.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    });
 
 
 
@@ -193,6 +198,10 @@ public class Dashboard extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
 

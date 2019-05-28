@@ -6,8 +6,8 @@
     <string name="title_all">All Schedules</string>
     <string name="title_home">All Schedules</string>
     <string name="title_myschedule">My Schedules</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_history">History</string>
+    <string name="title_Profile">Profile</string>
+    <string name="title_notifications">Notification</string>
     <string name="title_activity_my_schedule">MySchedule</string>
     <string name="title_dashboard">Dashboard</string>
 

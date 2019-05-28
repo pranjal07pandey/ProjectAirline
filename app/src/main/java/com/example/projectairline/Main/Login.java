@@ -90,16 +90,10 @@ public class Login extends AppCompatActivity {
 
                         else {
 
-//                        // Get new Instance ID token
+//
                             token = task.getResult().getToken();
 
-//                            Toast.makeText(Login.this, "Success " + token, Toast.LENGTH_LONG).show();
-
-
-//                        sendtokenagain(token2);
 //
-//                        // Log and toast
-
 
                         }
 
@@ -165,8 +159,8 @@ public class Login extends AppCompatActivity {
 
 
                     Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
-                    viewuserId.setText(null);
-                    viewPassword.setText(null);
+                    viewuserId.setText("");
+                    viewPassword.setText("");
 
 
 

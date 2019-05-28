@@ -34,6 +34,7 @@ public class SharedPreferencemanager  {
         editor.putString("userid", user.getUserid());
         editor.putInt("verified", user.getVerified());
         editor.putString("role", user.getRole());
+        editor.putString("profilepic",user.getProfilepic());
         editor.apply();
 
 
@@ -52,7 +53,9 @@ public class SharedPreferencemanager  {
                 sharedPreferences.getString("userid", null),
                 sharedPreferences.getString("password", null),
                 sharedPreferences.getString("role", null),
+                sharedPreferences.getString("profilepic",null),
                 sharedPreferences.getInt("verified", 1)
+
 
 
                 );

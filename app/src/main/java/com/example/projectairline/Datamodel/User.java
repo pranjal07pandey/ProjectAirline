@@ -10,15 +10,16 @@ public class User {
     private String role;
 //    @SerializedName("error")
 //    private int error;
-
+private String profilepic;
     private int verified;
 
 
-    public User(int id, String userid, String password, String role, int verified) {
+    public User(int id, String userid, String password, String role, String profilepic, int verified) {
         this.id = id;
         this.userid = userid;
         this.password = password;
         this.role = role;
+        this.profilepic = profilepic;
         this.verified = verified;
     }
 
@@ -36,6 +37,10 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public String getProfilepic() {
+        return profilepic;
     }
 
     public int getVerified() {

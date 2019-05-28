@@ -70,7 +70,7 @@ Scheduleadpterfirst scheduleadpterfirst;
                 {
                     progressBarmy.setVisibility(View.GONE);
 
-                    Toast.makeText(getContext(), "No Data To Display", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "No Data To Display", Toast.LENGTH_SHORT).show();
 
                 }
 
