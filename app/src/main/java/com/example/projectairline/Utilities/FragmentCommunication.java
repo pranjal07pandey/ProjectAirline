@@ -4,6 +4,4 @@ public interface FragmentCommunication {
 
     void respond(int position,String date);
 
-
-
 }

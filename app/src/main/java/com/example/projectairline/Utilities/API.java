@@ -1,5 +1,6 @@
 package com.example.projectairline.Utilities;
 
+import com.example.projectairline.Datamodel.History;
 import com.example.projectairline.Datamodel.Schedulemodel;
 import com.example.projectairline.Datamodel.User;
 
@@ -27,6 +28,15 @@ public interface API {
 
     @GET("getScheduleDetail.php/")
     Call<List<Schedulemodel>> getAllScheduleSecond(@Query("date") String date, @Query("id") int id);
+
+
+    @GET("getHistoryMonth.php/")
+    Call<List<History>> getAllHistory(@Query("id") int id);
+
+    @GET("getMonthDetail.php/")
+    Call<List<History>> getAllHistorysecond(@Query("id") int id, @Query("month") String month, @Query("year") String year);
+
+
 
 
 
